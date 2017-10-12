@@ -24,13 +24,6 @@ public class GameTable {
             }
         }
 
-        for(int i = 0; i < gameGrid.length; i++){
-            gameGrid[i][0].setFree(false);
-        }
-        for (int i = 0; i < gameGrid[0].length; i++){
-            gameGrid[0][i].setFree(false);
-        }
-
         ships = new ArrayList<>();
     }
 
