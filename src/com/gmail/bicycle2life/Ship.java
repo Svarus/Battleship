@@ -28,7 +28,7 @@ public class Ship {
                 name = "four-decker";
                 break;
             default:
-                name = "unknown";
+                name = "five-decker or bigger";
                 break;
         }
 
