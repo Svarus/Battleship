@@ -1,14 +1,14 @@
 package com.gmail.bicycle2life;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameTable {
-    private static final int SHIPS_COUNT = 10;
     private static final int MAX_SHIP_SIZE = 4;
     private int sizeRows;
     private int sizeColumns;
     private Cell[][] gameGrid;
-    private Ship[] ships;
+    private ArrayList<Ship> ships;
 
     public GameTable(int sizeRows, int sizeColumns) {
         this.sizeRows = sizeRows;
@@ -29,14 +29,14 @@ public class GameTable {
             gameGrid[0][i].setFree(false);
         }
 
-        ships = new Ship[SHIPS_COUNT];
+        ships = new ArrayList<>();
     }
 
     public void generateShips(){
-        int positionRow = 6;
-        int positionColumn = 3;
-        int size = 4;
-        boolean isHorizontal = true;
+        int positionRow;
+        int positionColumn;
+        int size;
+        boolean isHorizontal;
 
         Random rnd = new Random();
         for (int i = MAX_SHIP_SIZE; i > 0; i-- ){
@@ -47,7 +47,7 @@ public class GameTable {
                     isHorizontal = rnd.nextBoolean();
                     size = i;
                 } while (! checkShipSpaceAvailable(positionRow, positionColumn, size, isHorizontal));
-                ships[i - 1] = new Ship(positionRow, positionColumn, size, isHorizontal, gameGrid);
+                ships.add(new Ship(positionRow, positionColumn, size, isHorizontal, gameGrid));
                 //this.printTable();
             }
         }
