@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameTable {
-    private static final int MAX_SHIP_SIZE = 4;
     private int sizeRows;
     private int sizeColumns;
+    private int maxShipSize;
+
     private Cell[][] gameGrid;
     private ArrayList<Ship> ships;
 
-    public GameTable(int sizeRows, int sizeColumns) {
+    public GameTable(int sizeRows, int sizeColumns, int maxShipSize) {
         this.sizeRows = sizeRows;
         this.sizeColumns = sizeColumns;
+        this.maxShipSize = maxShipSize;
 
         gameGrid = new Cell[sizeRows + 2][sizeColumns + 2];
 
@@ -39,8 +41,8 @@ public class GameTable {
         boolean isHorizontal;
 
         Random rnd = new Random();
-        for (int i = MAX_SHIP_SIZE; i > 0; i-- ){
-            for (int j = 0; j <= MAX_SHIP_SIZE - i; j++){
+        for (int i = maxShipSize; i > 0; i-- ){
+            for (int j = 0; j <= maxShipSize - i; j++){
                 do {
                     positionRow = rnd.nextInt(sizeRows -1) + 1;
                     positionColumn = rnd.nextInt(sizeColumns - 1) + 1;
@@ -48,7 +50,6 @@ public class GameTable {
                     size = i;
                 } while (! checkShipSpaceAvailable(positionRow, positionColumn, size, isHorizontal));
                 ships.add(new Ship(positionRow, positionColumn, size, isHorizontal, gameGrid));
-                //this.printTable();
             }
         }
     }
