@@ -1,5 +1,8 @@
 package com.gmail.bicycle2life;
 
+/** Class for Ships items
+  * @version 1.0
+ */
 public class Ship {
     private Cell[] body;
     private int positionRow;
@@ -8,6 +11,13 @@ public class Ship {
     private boolean isHorizontal;
     private String name;
 
+    /** Constructor creates new Ship initialized by provided and checked data
+     * @param positionRow - number of row to insert "head" of ship
+     * @param positionColumn - number of column to insert "head" of ship
+     * @param size - size of ship to insert
+     * @param isHorizontal - describes if ship should be placed horizontally
+     * @param grid - game table which is array of {@link Cell} items. Each ship mark itself to appropriate Cells were it placed
+     */
     public Ship(int positionRow, int positionColumn, int size, boolean isHorizontal, Cell[][] grid){
         this.positionRow = positionRow;
         this.positionColumn = positionColumn;

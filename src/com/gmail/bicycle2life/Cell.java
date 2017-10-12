@@ -1,5 +1,8 @@
 package com.gmail.bicycle2life;
 
+/** Class for each item of {@link GameTable}
+ * @version 1.0
+ */
 public class Cell {
     private Ship ship;
     private boolean hasShep;
