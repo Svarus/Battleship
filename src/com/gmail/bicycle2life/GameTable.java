@@ -15,6 +15,8 @@ public class GameTable {
     private ArrayList<Ship> ships;
 
     /** Constructor creates new Game Table (game field) initialized by provided data
+     * Game table has 2 additional "zero" rows and columns. It's invisible to user
+     * and is only for algorithm purpose
      * @param sizeRows - number of game field rows
      * @param sizeColumns - number of game field columns
      * @param maxShipSize - size of biggest ship. Biggest ship is only one. Smaller ships are bigger quantity
