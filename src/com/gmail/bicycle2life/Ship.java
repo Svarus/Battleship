@@ -8,22 +8,30 @@ public class Ship {
     private int positionRow;
     private int positionColumn;
     private int size;
-    private boolean isHorizontal;
+    private boolean horizontal;
     private String name;
+
+    public Ship() {
+    }
 
     /** Constructor creates new Ship initialized by provided and checked data
      * @param positionRow - number of row to insert "head" of ship
      * @param positionColumn - number of column to insert "head" of ship
      * @param size - size of ship to insert
-     * @param isHorizontal - describes if ship should be placed horizontally
+     * @param horizontal - describes if ship should be placed horizontally
      * @param grid - game table which is array of {@link Cell} items. Each ship mark itself to appropriate Cells were it placed
      */
-    public Ship(int positionRow, int positionColumn, int size, boolean isHorizontal, Cell[][] grid){
+    public Ship(int positionRow, int positionColumn, int size, boolean horizontal, Cell[][] grid){
+        super();
         this.positionRow = positionRow;
         this.positionColumn = positionColumn;
         this.size = size;
-        this.isHorizontal = isHorizontal;
+        this.horizontal = horizontal;
 
+        initData(positionRow, positionColumn, size, horizontal, grid);
+    }
+
+    private final void initData(int positionRow, int positionColumn, int size, boolean horizontal, Cell[][] grid){
         switch (size){
             case 1:
                 name = "single-decker";
@@ -45,7 +53,7 @@ public class Ship {
         body = new Cell[size];
 
         int idx = 0;
-        if (isHorizontal) {
+        if (horizontal) {
             for (int i = positionColumn; i < positionColumn + size; i++){
                 grid[positionRow][i].setShip(this);
                 body[idx] = grid[positionRow][i];
@@ -80,5 +88,4 @@ public class Ship {
             grid[positionRow + size][positionColumn + 1].setFree(false);    //to bottom right
         }
     }
-
 }

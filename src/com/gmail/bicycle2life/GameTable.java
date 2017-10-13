@@ -14,6 +14,9 @@ public class GameTable {
     private Cell[][] gameGrid;
     private ArrayList<Ship> ships;
 
+    public GameTable() {
+    }
+
     /** Constructor creates new Game Table (game field) initialized by provided data
      * Game table has 2 additional "zero" rows and columns. It's invisible to user
      * and is only for algorithm purpose
@@ -22,10 +25,15 @@ public class GameTable {
      * @param maxShipSize - size of biggest ship. Biggest ship is only one. Smaller ships are bigger quantity
      */
     public GameTable(int sizeRows, int sizeColumns, int maxShipSize) {
+        super();
         this.sizeRows = sizeRows;
         this.sizeColumns = sizeColumns;
         this.maxShipSize = maxShipSize;
 
+        initTable();
+    }
+
+    private final void initTable(){
         gameGrid = new Cell[sizeRows + 2][sizeColumns + 2];
 
         for(int i = 0; i < gameGrid.length; i++){
@@ -100,7 +108,7 @@ public class GameTable {
         for (int i = 1; i <= sizeRows; i++){
             System.out.format("%2.2s" , i);
             for (int j = 1; j <= sizeColumns; j++){
-                System.out.format("%2.2s", gameGrid[i][j]);
+                System.out.format("%2.2s", gameGrid[i][j].getInfo());
             }
             System.out.print(System.lineSeparator());
         }

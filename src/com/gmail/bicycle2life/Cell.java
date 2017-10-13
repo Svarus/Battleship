@@ -5,37 +5,58 @@ package com.gmail.bicycle2life;
  */
 public class Cell {
     private Ship ship;
-    private boolean hasShep;
-    private boolean isFree;
+    private boolean hasShip;
+    private boolean free;
     private String info;
 
     public Cell() {
-        isFree = true;
+        super();
+        free = true;
         info = " ";
     }
 
     public void setShip(Ship ship){
         this.ship = ship;
-        hasShep = true;
-        isFree = false;
+        hasShip = true;
+        free = false;
         info = "S";
     }
 
-    public void setFree(boolean isFree){
-        this.isFree = isFree;
-        //info = "s";
+    public Ship getShip() {
+        return ship;
     }
 
-    public boolean hasShip() {
-        return hasShep;
+    public boolean isHasShip() {
+        return hasShip;
+    }
+
+    public void setHasShip(boolean hasShip) {
+        this.hasShip = hasShip;
     }
 
     public boolean isFree() {
-        return isFree;
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     @Override
-    public String toString(){
-        return info;
+    public String toString() {
+        return "Cell{" +
+                "ship=" + ship +
+                ", hasShip=" + hasShip +
+                ", free=" + free +
+                ", info='" + info + '\'' +
+                '}';
     }
 }
