@@ -1,5 +1,7 @@
 package com.gmail.bicycle2life;
 
+import java.util.Arrays;
+
 /** Class for Ships items
   * @version 1.0
  */
@@ -87,5 +89,33 @@ public class Ship {
             grid[positionRow + size][positionColumn].setFree(false);    //to bottom center
             grid[positionRow + size][positionColumn + 1].setFree(false);    //to bottom right
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ship ship = (Ship) o;
+
+        if (positionRow != ship.positionRow) return false;
+        if (positionColumn != ship.positionColumn) return false;
+        if (size != ship.size) return false;
+        if (horizontal != ship.horizontal) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        // Changed to deepEquals instead
+        if (!Arrays.deepEquals(body, ship.body)) return false;
+        return name != null ? name.equals(ship.name) : ship.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(body);
+        result = 31 * result + positionRow;
+        result = 31 * result + positionColumn;
+        result = 31 * result + size;
+        result = 31 * result + (horizontal ? 1 : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }

@@ -59,4 +59,26 @@ public class Cell {
                 ", info='" + info + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cell cell = (Cell) o;
+
+        if (hasShip != cell.hasShip) return false;
+        if (free != cell.free) return false;
+        if (ship != null ? !ship.equals(cell.ship) : cell.ship != null) return false;
+        return info != null ? info.equals(cell.info) : cell.info == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ship != null ? ship.hashCode() : 0;
+        result = 31 * result + (hasShip ? 1 : 0);
+        result = 31 * result + (free ? 1 : 0);
+        result = 31 * result + (info != null ? info.hashCode() : 0);
+        return result;
+    }
 }
